@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
+import { Button, Space } from "antd";
 
 const Recorder = () => {
   const [isRecording, setIsRecording] = useState(false); // 录音状态
@@ -68,28 +69,41 @@ const Recorder = () => {
   };
 
   return (
-    <div>
-      <h2>Audio Recorder</h2>
-      <div>
-        <button onClick={startRecording} disabled={isRecording}>
-          Start Recording
-        </button>
-        <br></br>
-        <button onClick={stopRecording} disabled={!isRecording}>
-          Stop Recording
-        </button>
-      </div>
-      {audioURL && (
-        <div>
-          <h3>Recorded Audio:</h3>
-          <audio controls src={audioURL}></audio>
-        </div>
-      )}
-      <div>
-        <button onClick={uploadAudio} disabled={!audioBlob}>
-          Upload Audio
-        </button>
-      </div>
+    <div className="p-4">
+      <Space direction="vertical" size="middle" className="w-full">
+        <Space>
+          <Button
+            type="primary"
+            onClick={startRecording}
+            disabled={isRecording}
+          >
+            Start Recording
+          </Button>
+          <Button
+            type="primary"
+            onClick={stopRecording}
+            disabled={!isRecording}
+            // loading={isRecording}
+          >
+            Stop Recording
+          </Button>
+        </Space>
+
+        {audioURL && (
+          <div className="border p-4 rounded-lg bg-gray-50">
+            <h3 className="mb-2 text-lg font-medium">录音预览</h3>
+            <audio controls src={audioURL} className="w-full"></audio>
+            <Button
+              type="primary"
+              onClick={uploadAudio}
+              disabled={!audioBlob}
+              className="mt-4"
+            >
+              上传录音
+            </Button>
+          </div>
+        )}
+      </Space>
     </div>
   );
 };
