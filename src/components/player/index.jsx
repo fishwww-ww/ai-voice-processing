@@ -3,10 +3,10 @@ import "react-h5-audio-player/lib/styles.css";
 // import 'react-h5-audio-player/lib/styles.less' Use LESS
 // import 'react-h5-audio-player/src/styles.scss' Use SASS
 
-const Player = () => (
+const Player = ({ src }) => (
   <AudioPlayer
     autoPlay
-    src="http://example.com/audio.mp3"
+    src={src}
     onPlay={(e) => console.log("onPlay")}
     // other props here
   />
