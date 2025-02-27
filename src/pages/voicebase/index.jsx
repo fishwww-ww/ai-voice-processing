@@ -2,6 +2,7 @@ import Nav from "@/components/nav";
 import { Button, Layout } from "antd";
 import AudioRecorder from "../../components/ar";
 import Recorder from "../../components/recorder";
+import UploadAudio from "../../components/UploadAudio";
 
 Component.displayName = "VoiceBase";
 
@@ -14,6 +15,9 @@ export default function Component() {
         <div>
           <Button type="primary">录制</Button>
           <Recorder />
+        </div>
+        <div>
+          <UploadAudio />
         </div>
       </Layout>
     </div>
